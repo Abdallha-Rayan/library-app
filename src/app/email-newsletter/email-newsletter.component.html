@@ -1,0 +1,42 @@
+<h2>Email Newsletter</h2>
+<form #emailFrm="ngForm" (ngSubmit)="onSubmitForm(emailFrm)" novalidate>
+    <div>
+        <input type="text" name="fullName"
+            #fullName="ngModel" ngModel
+            required
+            pattern="[A-Za-z ]{5,}">
+        <div class="text-danger"
+            *ngIf="!fullName.valid && (fullName.dirty || fullName.touched)">
+            <div *ngIf="fullName.errors?.['required']">
+                Name is required
+            </div>
+            <!-- <div *ngIf="email.errors?.['email']">
+                Enter a valid email address
+            </div> -->
+            <div *ngIf="fullName.errors?.['pattern']">
+                Only letters and spaces allowed in names
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="text" name="email"
+            #email="ngModel" ngModel
+            required
+            pattern="[A-Za-z0-9._%-]+@[A-Za-z0-9._%-]+\.[a-z]{2,3}">
+        <div class="text-danger"
+            *ngIf="!email.valid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors?.['required']">
+                Email is required
+            </div>
+            <!-- <div *ngIf="email.errors?.['email']">
+                Enter a valid email address
+            </div> -->
+            <div *ngIf="email.errors?.['pattern']">
+                Enter a valid email address
+            </div>
+        </div>
+    </div>
+        <!-- [(ngModel)]="email" -->
+    <button type="submit"
+        >Submit</button>
+</form>

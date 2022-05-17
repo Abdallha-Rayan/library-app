@@ -1,0 +1,11 @@
+<h1 class="bg-primary text-light ps-3 pe-3 pt-2 pb-2">Library Books</h1>
+<div>
+    <button class="btn btn-dark" (click)="addTestBook()">Add Test Book</button>
+</div>
+<div *ngFor="let book of books" id="bk-{{book.id}}">
+    <h2>{{book.title}}</h2>
+    <div>
+        <p>{{book.author}}, {{book.publishDate}}</p>
+        <p>Pages: {{book.pages}}, Edition: {{book.edition}}</p>
+    </div>
+</div>

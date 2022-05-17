@@ -1,0 +1,33 @@
+<h2>Email Newsletter</h2>
+<form [formGroup]="emailFrm" (ngSubmit)="onFormSubmit()">
+    <div>
+        <input formControlName="fullName" type="text">
+        <div class="text-danger" *ngIf="!fullName?.valid && (fullName?.dirty || fullName?.touched)">
+            <div *ngIf="fullName?.errors?.['required']">
+                Your name is required
+            </div>
+            <div *ngIf="fullName?.errors?.['minlength']">
+                Name must be at least 5 letters
+            </div>
+        </div>
+    </div>
+    <div>
+        <input formControlName="email" type="text">
+        <!-- <div class="text-danger"
+            *ngIf="!emailFrm.controls['email'].valid">
+            Errors
+        </div> -->
+        <div class="text-danger" *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+            <div *ngIf="email?.errors?.['required']">
+                Email is required
+            </div>
+            <!-- <div *ngIf="email?.errors?.['email']">
+                Enter a valid email address
+            </div> -->
+            <div *ngIf="email?.errors?.['pattern']">
+                Enter a valid email address
+            </div>
+        </div>
+    </div>
+    <button [disabled]="!emailFrm.valid" type="submit">Submit</button>
+</form>
